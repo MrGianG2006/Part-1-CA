@@ -1,0 +1,24 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.9
+    working_directory: ~/mypassword
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m pip install --upgrade pip
+            python3 -m venv virtfile
+            . calculator/bin/activate
+            pip install -r requirements.txt
+      - run:
+          name: run tests
+          command: |
+            . calculator/bin/activate
+            python -m pytest tests -vv --cov
+workflows:
+  build_and_test:
+    jobs:
+      - build
