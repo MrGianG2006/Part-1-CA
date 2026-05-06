@@ -45,7 +45,7 @@ def test_deposit_tier_3(monkeypatch):
     calculate_interest(50000)
     assert outputs == ['Tier 1: Deposit: 50000, Amount in Tier 1: 1000, Interest from Tier 1: ''30.00',"Tier 2: Deposit: 50000, Amount in Tier 2: 10000, Interest from Tier 2: 350.00", 'Tier 3: Deposit: 50000, Amount in Tier 3: 50000, Interest from Tier 3: 1560.00']
 
-def test_deposit_tier_4(monkeypatch):
+def tst_deposit_tier_4(monkeypatch):
     inputs = iter([101000,0.045,4545])
     monkeypatch.setattr('builtins.input',lambda _: next(inputs))
     outputs=[]
